@@ -4,7 +4,7 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 // Rute pendaftaran
-router.post("/register", async (req, res, next) => {
+router.post("/register",  async (req, res, next) => {
   try {
     await User.create(req.body);
     res.status(201).json({ message: "User registered successfully" });

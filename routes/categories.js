@@ -1,8 +1,9 @@
 const express = require('express');
+const { authenticate } = require("../middleware/auth");
 const router = express.Router();
 const Category = require('../models/category'); // Impor model Category
 // Endpoint untuk menambahkan kategori baru
-router.post('/', async (req, res, next) => {
+router.post('/', authenticate, async (req, res, next) => {
  try {
  const { categoryName, description } = req.body;
  const newCategory = await Category.create({ categoryName,
@@ -13,7 +14,7 @@ description });
  }
 });
 // Endpoint untuk menampilkan semua kategori
-router.get('/', async (req, res, next) => {
+router.get('/', authenticate, async (req, res, next) => {
  try {
  const categories = await Category.findAll();
  res.json(categories);
@@ -22,7 +23,7 @@ router.get('/', async (req, res, next) => {
  }
 });
 // Endpoint untuk menampilkan kategori berdasarkan ID
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', authenticate, async (req, res, next) => {
  try {
  const category = await Category.findByPk(req.params.id);
  if (category) {
@@ -35,7 +36,7 @@ router.get('/:id', async (req, res, next) => {
  }
 });
 // Endpoint untuk memperbarui kategori berdasarkan ID
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', authenticate, async (req, res, next) => {
     try {
     const { categoryName, description } = req.body;
     const category = await Category.findByPk(req.params.id);
@@ -52,7 +53,7 @@ router.put('/:id', async (req, res, next) => {
     }
    });
    // Endpoint untuk menghapus kategori berdasarkan ID
-   router.delete('/:id', async (req, res, next) => {
+   router.delete('/:id', authenticate, async (req, res, next) => {
     try {
     const category = await Category.findByPk(req.params.id);
     if (category) {

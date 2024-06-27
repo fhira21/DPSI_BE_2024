@@ -6,7 +6,7 @@ const { authenticate, authorize } = require("../middleware/auth");
 router.post("/", authenticate, authorize(["admin"]), async (req, res, next) => {
   try {
     await Products.create(req.body);
-    res.status(201).json({ message: "PRoduct Add successfully" });
+    res.status(201).json({ message: "Product Add successfully" });
   } catch (err) {
     next(err);
   }

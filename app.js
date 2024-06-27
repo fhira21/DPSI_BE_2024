@@ -12,6 +12,7 @@ var customerRouter = require("./routes/customer");
 var orderRouter = require("./routes/order");
 var orderDetailRouter = require("./routes/orderDetail");
 var shipperRouter = require("./routes/shipper");
+var supplierRouter = require('./routes/supplier');
 
 var app = express();
 app.use(logger("dev"));
@@ -30,6 +31,7 @@ app.use("/employee", employeeRouter);
 app.use("/order", orderRouter);
 app.use("/orderDetail", orderDetailRouter);
 app.use("/shipper", shipperRouter);
+app.use("/supplier", supplierRouter);
 
 app.listen(3001, async () => {
   await sequelize

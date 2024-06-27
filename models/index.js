@@ -1,11 +1,10 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize('dspi_fhira8', 'root', '', {
+const sequelize = new Sequelize('dpsi_fhira', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
 });
 
-// // Relasi antara model
 // Customer.hasMany(Order, { foreignKey: "customerID" });
 // Order.belongsTo(Customer, { foreignKey: "customerID" });
 
